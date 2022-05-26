@@ -40,7 +40,9 @@
         "ts": "never",
         "tsx": "never"
       }
-    ]
+    ],
+    "no-unused-vars": 0,
+    "import/prefer-default-export": 0
   },
   // Unable to resolve path to module './reportWebVitals'.eslintimport/no-unresolved
   // 无法解析模块....
