@@ -37,15 +37,9 @@ function notFound() {
               Please check that the URL you entered is correct, or click the
               button below to return to the homepage.
             </div>
-            <span
-              className="bullshit__return-home"
-              onClick={() => {}}
-              onKeyDown={handleClick}
-              role="button"
-              tabIndex={0}
-            >
+            <button className="bullshit__return-home" onClick={handleClick}>
               Back to home
-            </span>
+            </button>
           </div>
         </div>
       </div>

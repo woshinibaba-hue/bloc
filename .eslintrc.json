@@ -45,7 +45,8 @@
     "import/prefer-default-export": 0,
     "camelcase": 0,
     "no-console": 0,
-    "react/button-has-type": 0
+    "react/button-has-type": 0,
+    "global-require": 0
   },
   // Unable to resolve path to module './reportWebVitals'.eslintimport/no-unresolved
   // 无法解析模块....

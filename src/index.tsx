@@ -10,6 +10,7 @@ import reportWebVitals from './reportWebVitals'
 
 // css样式重置
 import 'normalize.css'
+import './assets/css/base.css'
 
 // 引入min样式可以解决 WARNING in ./node_modules/antd/dist/antd.css 警告
 import 'antd/dist/antd.min.css'

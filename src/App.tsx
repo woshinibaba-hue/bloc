@@ -1,6 +1,4 @@
-import React, { startTransition } from 'react'
-
-import { Outlet, useRoutes } from 'react-router-dom'
+import React from 'react'
 
 import Router from './router'
 

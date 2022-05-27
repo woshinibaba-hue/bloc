@@ -181,6 +181,10 @@ export const NotFound = styled.div`
         animation-delay: 0.3s;
         animation-fill-mode: forwards;
       }
+      &__return-home {
+        border: 0;
+      }
+
       @keyframes slideUp {
         0% {
           transform: translateY(60px);
