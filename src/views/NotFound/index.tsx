@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { useNavigate } from 'react-router-dom'
+
 import notImg from '@/assets/404_images/404.png'
 import notCloud from '@/assets/404_images/404_cloud.png'
 
@@ -7,6 +9,12 @@ import { NotFound } from './style'
 
 function notFound() {
   const message = 'The webmaster said that you can not enter this page...'
+
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    navigate('/')
+  }
 
   return (
     <NotFound>
@@ -29,7 +37,15 @@ function notFound() {
               Please check that the URL you entered is correct, or click the
               button below to return to the homepage.
             </div>
-            <span className="bullshit__return-home">Back to home</span>
+            <span
+              className="bullshit__return-home"
+              onClick={() => {}}
+              onKeyDown={handleClick}
+              role="button"
+              tabIndex={0}
+            >
+              Back to home
+            </span>
           </div>
         </div>
       </div>
