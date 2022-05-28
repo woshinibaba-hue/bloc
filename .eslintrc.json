@@ -46,7 +46,12 @@
     "camelcase": 0,
     "no-console": 0,
     "react/button-has-type": 0,
-    "global-require": 0
+    "global-require": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "react/no-children-prop": 0,
+    "react/function-component-definition": 0,
+    "no-alert": 0,
+    "no-restricted-globals": 0
   },
   // Unable to resolve path to module './reportWebVitals'.eslintimport/no-unresolved
   // 无法解析模块....

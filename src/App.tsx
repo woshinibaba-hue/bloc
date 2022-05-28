@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Router from './router'
+import RouterBeforeEach from '@/router/RouterBeforeEach'
 
 function App() {
   // 路由渲染
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="App">
-      <Router />
+      <RouterBeforeEach />
     </div>
   )
 }

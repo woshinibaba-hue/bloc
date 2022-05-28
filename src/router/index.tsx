@@ -11,7 +11,25 @@ interface IRoute {
 const routers: IRoute[] = [
   {
     path: '/',
-    component: lazy(() => import('@/layout'))
+    component: lazy(() => import('@/layout')),
+    children: [
+      {
+        path: '',
+        component: lazy(() => import('@/views/Main'))
+      },
+      {
+        path: '/guestbook',
+        component: lazy(() => import('@/views/Guestbook'))
+      },
+      {
+        path: '/write',
+        component: lazy(() => import('@/views/Write'))
+      }
+    ]
+  },
+  {
+    path: '/login',
+    component: lazy(() => import('@/views/Login'))
   },
   {
     path: '*',
@@ -37,4 +55,4 @@ const syncRouter = (routes: IRoute[]): RouteObject[] => {
   return mRoutes
 }
 
-export default () => useRoutes(syncRouter(routers))
+export default syncRouter(routers)

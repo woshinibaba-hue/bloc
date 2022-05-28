@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import { Layout, Divider } from 'antd'
 
 import { LayOutStyle } from './style'
@@ -11,8 +11,10 @@ import Tags from './components/Tags'
 const { Header, Sider, Content } = Layout
 
 function LayOut() {
+  const location = useLocation()
+
   return (
-    <LayOutStyle>
+    <LayOutStyle mainWidth={location.pathname === '/write' ? '960px' : '700px'}>
       <Layout>
         <Header>
           <div className="navs">
@@ -27,10 +29,9 @@ function LayOut() {
         </Header>
         <Layout className="main">
           <Content>
-            {/* 路由出口 */}
             <Outlet />
           </Content>
-          <Sider>侧边栏组件</Sider>
+          {location.pathname === '/write' ? '' : <Sider>侧边栏组件</Sider>}
         </Layout>
       </Layout>
     </LayOutStyle>

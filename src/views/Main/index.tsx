@@ -1,11 +1,11 @@
 import React, { memo } from 'react'
 
-function Nav() {
+function Main() {
   return (
     <div>
-      <h2>导航栏</h2>
+      <h2>首页</h2>
     </div>
   )
 }
 
-export default memo(Nav)
+export default memo(Main)
