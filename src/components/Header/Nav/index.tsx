@@ -1,13 +1,32 @@
 import React, { memo } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, Link } from 'react-router-dom'
 
-import { Tabs, Input, Button } from 'antd'
-import { BellFilled, MessageFilled } from '@ant-design/icons'
+import { Tabs, Input, Button, Avatar, Menu, Dropdown } from 'antd'
+import { BellFilled, MessageFilled, UserOutlined } from '@ant-design/icons'
 
 import { NavStyle } from './style'
 
 const { TabPane } = Tabs
 const { Search } = Input
+
+const menu = (
+  <Menu
+    items={[
+      {
+        key: '1',
+        label: <Link to="/">我的主页</Link>
+      },
+      {
+        key: '2',
+        label: <Link to="/">个人设置</Link>
+      },
+      {
+        key: '3',
+        label: <Link to="/">退出登录</Link>
+      }
+    ]}
+  />
+)
 
 function Nav() {
   const navigate = useNavigate()
@@ -32,6 +51,9 @@ function Nav() {
       </Button>
       <BellFilled />
       <MessageFilled />
+      <Dropdown overlay={menu} placement="bottomLeft">
+        <Avatar size={40} icon={<UserOutlined />} />
+      </Dropdown>
     </NavStyle>
   )
 }

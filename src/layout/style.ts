@@ -28,8 +28,6 @@ export const LayOutStyle = styled.div<IProps>`
       box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 5%);
 
       .tags {
-        max-width: 960px;
-        width: 100%;
         margin: 0 auto;
       }
     }
@@ -55,6 +53,20 @@ export const LayOutStyle = styled.div<IProps>`
       .ant-layout-sider {
         background-color: #fff;
         border-radius: 4px;
+      }
+    }
+
+    .ant-input-search {
+      max-width: 450px;
+      border-radius: 20px;
+      padding: 2px 5px;
+      margin: 0 20px 0 80px;
+      overflow: hidden;
+      background-color: #f6f6f6;
+
+      .ant-btn {
+        border: 0;
+        background-color: #f6f6f6;
       }
     }
   }

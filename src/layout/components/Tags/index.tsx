@@ -1,10 +1,12 @@
 import React, { memo } from 'react'
 
+import { TagStyle } from './style'
+
 function Tags() {
   return (
-    <div>
-      <h2>标签栏</h2>
-    </div>
+    <TagStyle>
+      <span>标签栏</span>
+    </TagStyle>
   )
 }
 

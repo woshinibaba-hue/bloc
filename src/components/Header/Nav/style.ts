@@ -6,7 +6,7 @@ export const NavStyle = styled.div`
   height: 64px;
 
   .logo {
-    margin-right: 20px;
+    margin-right: 55px;
   }
 
   .ant-tabs {
@@ -14,20 +14,6 @@ export const NavStyle = styled.div`
 
     .ant-tabs-nav {
       margin: 0;
-    }
-  }
-
-  .ant-input-search {
-    max-width: 450px;
-    border-radius: 20px;
-    padding: 2px 5px;
-    margin: 0 20px 0 80px;
-    overflow: hidden;
-    background-color: #f6f6f6;
-
-    .ant-btn {
-      border: 0;
-      background-color: #f6f6f6;
     }
   }
 
