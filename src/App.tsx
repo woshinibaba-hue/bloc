@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { BackTop } from 'antd'
+
 import RouterBeforeEach from '@/router/RouterBeforeEach'
 
 function App() {
@@ -9,6 +11,7 @@ function App() {
 
   return (
     <div className="App">
+      <BackTop />
       <RouterBeforeEach />
     </div>
   )

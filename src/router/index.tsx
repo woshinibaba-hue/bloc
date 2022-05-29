@@ -24,6 +24,10 @@ const routers: IRoute[] = [
       {
         path: '/write',
         component: lazy(() => import('@/views/Write'))
+      },
+      {
+        path: '/article/:id',
+        component: lazy(() => import('@/views/Article'))
       }
     ]
   },

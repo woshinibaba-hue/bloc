@@ -1,12 +1,13 @@
 import React, { memo } from 'react'
-import { useNavigate, useLocation, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-import { Tabs, Input, Button, Avatar, Menu, Dropdown } from 'antd'
+import { Input, Button, Avatar, Menu, Dropdown } from 'antd'
 import { BellFilled, MessageFilled, UserOutlined } from '@ant-design/icons'
+
+import ZMenu from '../../Menu'
 
 import { NavStyle } from './style'
 
-const { TabPane } = Tabs
 const { Search } = Input
 
 const menu = (
@@ -28,23 +29,19 @@ const menu = (
   />
 )
 
-function Nav() {
-  const navigate = useNavigate()
-  const location = useLocation()
+const items = [
+  { label: '首页', key: '/' },
+  { label: '留言', key: '/guestbook' },
+  { label: '写文章', key: '/write' }
+]
 
+function Nav() {
   return (
     <NavStyle>
       <div className="logo">
         <h2>logo</h2>
       </div>
-      <Tabs
-        defaultActiveKey={location.pathname}
-        onChange={(path: string) => navigate(path)}
-      >
-        <TabPane tab="首页" key="/" />
-        <TabPane tab="留言" key="/guestbook" />
-        <TabPane tab="写文章" key="/write" />
-      </Tabs>
+      <ZMenu items={items} />
       <Search placeholder="请输入搜索内容" bordered={false} />
       <Button shape="round" type="primary">
         提问

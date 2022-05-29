@@ -11,8 +11,8 @@ import { ItemStyle } from './style'
 
 import { ProposType } from './types'
 
-const Item: React.FC<ProposType> = ({ isLike }) => (
-  <ItemStyle isLike>
+const Item: React.FC<ProposType> = ({ isLike, onClick }) => (
+  <ItemStyle isLike onClick={onClick}>
     <div className="info">
       <div className="name">啊哈哈哈和~</div>
       <div className="public-time">1月前</div>

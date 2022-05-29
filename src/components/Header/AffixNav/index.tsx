@@ -1,5 +1,4 @@
 import React, { memo } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
 
 import { Input, Button } from 'antd'
 
@@ -8,9 +7,6 @@ import { NavStyle } from './style'
 const { Search } = Input
 
 function Nav() {
-  const navigate = useNavigate()
-  const location = useLocation()
-
   return (
     <NavStyle>
       <div className="left">

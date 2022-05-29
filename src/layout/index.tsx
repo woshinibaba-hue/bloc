@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react'
+import React, { memo, useState, useEffect } from 'react'
 
 import { Outlet, useLocation } from 'react-router-dom'
 import { Layout, Divider, Affix } from 'antd'
@@ -36,6 +36,10 @@ function LayOut() {
     }
     return ''
   }
+
+  useEffect(() => {
+    setAffxe(false)
+  }, [location.pathname])
 
   return (
     <LayOutStyle
