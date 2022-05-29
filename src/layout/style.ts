@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 type IProps = {
   mainWidth?: string
+  isAffixNav?: boolean
 }
 
 export const LayOutStyle = styled.div<IProps>`
@@ -14,6 +15,12 @@ export const LayOutStyle = styled.div<IProps>`
 
     .ant-divider {
       margin: 0;
+    }
+
+    .nav-header {
+      position: ${({ isAffixNav }) => (isAffixNav ? 'fixed' : '')};
+      z-index: 1;
+      width: 100%;
     }
 
     .navs {
@@ -32,18 +39,18 @@ export const LayOutStyle = styled.div<IProps>`
       }
     }
 
-    .main {
+    > .main {
       max-width: 960px;
       width: 100%;
       margin: 0 auto;
       background: transparent;
-      margin-top: 10px;
+      margin-top: ${({ isAffixNav }) => (isAffixNav ? '74px' : '10px')};
 
       .ant-layout-content {
         background-color: #fff;
         padding: 15px 12px;
         margin-right: 15px;
-        width: ${(props) => props.mainWidth};
+        width: ${({ mainWidth }) => mainWidth};
         box-sizing: border-box;
         border-radius: 4px;
 

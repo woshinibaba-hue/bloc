@@ -12,7 +12,7 @@ interface IProps {
   // children: React.ReactNode
 }
 
-const token = ''
+const token = '111'
 
 // 需要登录才可访问的路由
 const whiteList = ['/write']

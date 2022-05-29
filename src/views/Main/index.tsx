@@ -1,9 +1,13 @@
 import React, { memo } from 'react'
 
+import ArticleItem from '@/components/Article/Item'
+
 function Main() {
   return (
     <div>
-      <h2>首页</h2>
+      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
+        <ArticleItem key={item} isLike />
+      ))}
     </div>
   )
 }
