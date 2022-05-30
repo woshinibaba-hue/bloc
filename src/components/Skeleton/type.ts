@@ -1,4 +1,5 @@
 export type SkeletonProps = {
+  width?: number
   avatar?: boolean
   rows?: number
   titleWidth?: string

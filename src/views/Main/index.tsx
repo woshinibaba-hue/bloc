@@ -11,7 +11,7 @@ function Main() {
 
   return (
     <MainStyle>
-      <div className="list">
+      <div className="list bg">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
           <ArticleItem
             key={item}
@@ -20,7 +20,7 @@ function Main() {
           />
         ))}
       </div>
-      <div className="sidebar">侧边栏</div>
+      <div className="sidebar bg">侧边栏</div>
     </MainStyle>
   )
 }

@@ -7,6 +7,7 @@ import { SkeletonProps } from './type'
 import { SkeletonStyle } from './styled'
 
 const ZSkeleton: React.FC<SkeletonProps> = ({
+  width = 700,
   avatar,
   rows = 4,
   titleWidth = 80,
@@ -18,6 +19,7 @@ const ZSkeleton: React.FC<SkeletonProps> = ({
     <SkeletonStyle
       paragraphHeight={paragraphHeight}
       paragraphMarginBottom={paragraphMarginBottom}
+      width={width}
     >
       <Skeleton
         active

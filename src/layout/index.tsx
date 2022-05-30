@@ -9,7 +9,7 @@ import Tags from './components/Tags'
 
 import { LayOutStyle } from './style'
 
-const { Header, Sider, Content } = Layout
+const { Header, Content } = Layout
 
 function LayOut() {
   const location = useLocation()

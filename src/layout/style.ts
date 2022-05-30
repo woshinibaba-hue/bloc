@@ -49,7 +49,6 @@ export const LayOutStyle = styled.div<IProps>`
       .ant-layout-content {
         background-color: ${({ isMainBg }) =>
           isMainBg ? '#fff' : 'transparent'};
-        padding: 15px 25px;
         margin-right: 15px;
         width: 960px;
         box-sizing: border-box;

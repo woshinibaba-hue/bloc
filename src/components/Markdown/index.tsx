@@ -7,7 +7,7 @@ import 'markdown-navbar/dist/navbar.css'
 
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 import remarkGfm from 'remark-gfm'
 
@@ -18,7 +18,7 @@ import { MarkdownProps } from './types'
 const Detail: React.FC<MarkdownProps> = ({ textContent = '' }) => {
   return (
     <MarkdownStyle>
-      <div className="content">
+      <div className="content bg">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
@@ -26,7 +26,7 @@ const Detail: React.FC<MarkdownProps> = ({ textContent = '' }) => {
               const match = /language-(\w+)/.exec(className || '')
               return !inline && match ? (
                 <SyntaxHighlighter
-                  style={vscDarkPlus}
+                  style={materialDark}
                   showLineNumbers
                   language={match[1]}
                   PreTag="div"
@@ -44,9 +44,15 @@ const Detail: React.FC<MarkdownProps> = ({ textContent = '' }) => {
           {textContent}
         </ReactMarkdown>
       </div>
-      <Anchor offsetTop={74}>
-        <MarkNav source={textContent} />
-      </Anchor>
+      <div className="anchor">
+        <Anchor offsetTop={93}>
+          <MarkNav
+            source={textContent}
+            updateHashAuto={false}
+            headingTopOffset={15}
+          />
+        </Anchor>
+      </div>
     </MarkdownStyle>
   )
 }

@@ -1,10 +1,23 @@
 /* 全局主题色 */
 :root {
   --color-text: #1d7dfa;
+  --anchor-width: 300px;
+  --content-width: 700px;
+  --not-anchor-width: 960px;
 }
 
 body {
   background-color: #f4f5f5 !important;
+}
+
+.bg {
+  background-color: #fff;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  padding: 15px 25px;
 }
 
 #root,
