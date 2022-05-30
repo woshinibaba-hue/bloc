@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 type IProps = {
-  mainWidth?: string
   isAffixNav?: boolean
+  isMainBg?: boolean
 }
 
 export const LayOutStyle = styled.div<IProps>`
@@ -47,14 +47,13 @@ export const LayOutStyle = styled.div<IProps>`
       margin-top: ${({ isAffixNav }) => (isAffixNav ? '74px' : '10px')};
 
       .ant-layout-content {
-        background-color: #fff;
-        padding: 15px 12px;
+        background-color: ${({ isMainBg }) =>
+          isMainBg ? '#fff' : 'transparent'};
+        padding: 15px 25px;
         margin-right: 15px;
-        width: ${({ mainWidth }) => mainWidth};
+        width: 960px;
         box-sizing: border-box;
         border-radius: 4px;
-
-        transition: all 0.6s;
       }
 
       .ant-layout-sider {

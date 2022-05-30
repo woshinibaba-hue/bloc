@@ -43,8 +43,10 @@ function LayOut() {
 
   return (
     <LayOutStyle
-      mainWidth={location.pathname === '/write' ? '960px' : '700px'}
       isAffixNav={location.pathname !== '/'}
+      isMainBg={
+        location.pathname !== '/' && !location.pathname.includes('/article')
+      }
     >
       <Layout>
         <Header className="nav-header">
@@ -58,7 +60,6 @@ function LayOut() {
           <Content>
             <Outlet />
           </Content>
-          {location.pathname === '/write' ? '' : <Sider>侧边栏组件</Sider>}
         </Layout>
       </Layout>
     </LayOutStyle>

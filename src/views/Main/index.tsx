@@ -4,19 +4,24 @@ import { useNavigate } from 'react-router-dom'
 
 import ArticleItem from '@/components/Article/Item'
 
+import { MainStyle } from './styled'
+
 function Main() {
   const navigate = useNavigate()
 
   return (
-    <div>
-      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
-        <ArticleItem
-          key={item}
-          isLike
-          onClick={() => navigate(`/article/${item}`)}
-        />
-      ))}
-    </div>
+    <MainStyle>
+      <div className="list">
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
+          <ArticleItem
+            key={item}
+            isLike
+            onClick={() => navigate(`/article/${item}`)}
+          />
+        ))}
+      </div>
+      <div className="sidebar">侧边栏</div>
+    </MainStyle>
   )
 }
 

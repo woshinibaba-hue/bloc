@@ -53,7 +53,9 @@
     "no-alert": 0,
     "no-restricted-globals": 0,
     "jsx-a11y/click-events-have-key-events": 0,
-    "jsx-a11y/no-static-element-interactions": 0
+    "jsx-a11y/no-static-element-interactions": 0,
+    "react/no-unstable-nested-components": 0,
+    "react/jsx-props-no-spreading": 0
   },
   // Unable to resolve path to module './reportWebVitals'.eslintimport/no-unresolved
   // 无法解析模块....
