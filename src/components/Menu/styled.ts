@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const MenuStyle = styled.div`
+  flex: 1;
   display: flex;
 
   .menu-item {

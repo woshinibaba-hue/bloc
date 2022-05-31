@@ -1,6 +1,6 @@
 import React, { lazy, LazyExoticComponent, Suspense } from 'react'
 
-import { RouteObject, useRoutes } from 'react-router-dom'
+import { RouteObject } from 'react-router-dom'
 
 interface IRoute {
   path: string
@@ -28,6 +28,10 @@ const routers: IRoute[] = [
       {
         path: '/article/:id',
         component: lazy(() => import('@/views/Article'))
+      },
+      {
+        path: '/waiting',
+        component: lazy(() => import('@/views/Waiting'))
       }
     ]
   },

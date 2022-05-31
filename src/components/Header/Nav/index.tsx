@@ -32,6 +32,7 @@ const menu = (
 const items = [
   { label: '首页', key: '/' },
   { label: '留言', key: '/guestbook' },
+  { label: '等你来答', key: '/waiting' },
   { label: '写文章', key: '/write' }
 ]
 

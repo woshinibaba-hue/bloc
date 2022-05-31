@@ -64,7 +64,7 @@ export const LayOutStyle = styled.div<IProps>`
       max-width: 450px;
       border-radius: 20px;
       padding: 2px 5px;
-      margin: 0 20px 0 80px;
+      margin-right: 20px;
       overflow: hidden;
       background-color: #f6f6f6;
 
