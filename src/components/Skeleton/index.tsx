@@ -7,7 +7,7 @@ import { SkeletonProps } from './type'
 import { SkeletonStyle } from './styled'
 
 const ZSkeleton: React.FC<SkeletonProps> = ({
-  width = 700,
+  width = 755,
   avatar,
   rows = 4,
   titleWidth = 80,
