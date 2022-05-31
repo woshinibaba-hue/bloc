@@ -1,16 +1,11 @@
 import React from 'react'
 
-import 'markdown-navbar/dist/navbar.css'
-
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
-
 import remarkGfm from 'remark-gfm'
-
-import { MarkdownStyle } from './styled'
-
 import { MarkdownProps } from './types'
+import { MarkdownStyle } from './styled'
 
 const Detail: React.FC<MarkdownProps> = ({ textContent = '' }) => {
   return (

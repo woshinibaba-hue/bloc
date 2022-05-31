@@ -56,7 +56,7 @@ function LayOut() {
         </Header>
         <Divider />
         {isShowAffix()}
-        <Layout className="main">
+        <Layout className="main shadow">
           <Content>
             <Outlet />
           </Content>
