@@ -4,6 +4,8 @@ import { Anchor } from 'antd'
 import { LikeTwoTone, EyeTwoTone } from '@ant-design/icons'
 
 import MarkNav from 'markdown-navbar'
+// markdown-navbar 目录样式
+import 'markdown-navbar/dist/navbar.css'
 
 import { MarkdownProps } from '@/components/Markdown/types'
 
