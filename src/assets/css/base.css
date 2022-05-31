@@ -37,10 +37,11 @@ body {
 ::-webkit-scrollbar {
   /*高宽分别对应横竖滚动条的尺寸*/
   width: 6px;
+  height: 6px;
 }
 /*滚动条里面滑块*/
 ::-webkit-scrollbar-thumb {
-  background-color: #e4e6eb;
+  background-color: rgb(158, 158, 158);
   border-radius: 8px;
 }
 
