@@ -11,6 +11,7 @@ export const LayOutStyle = styled.div<IProps>`
 
     .ant-layout-header {
       background-color: #fff;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 5%);
     }
 
     .ant-divider {
@@ -42,9 +43,7 @@ export const LayOutStyle = styled.div<IProps>`
     > .main {
       max-width: 960px;
       width: 100%;
-      margin: 0 auto;
-      background: transparent;
-      margin-top: ${({ isAffixNav }) => (isAffixNav ? '74px' : '10px')};
+      margin: ${({ isAffixNav }) => (isAffixNav ? '74px' : '10px')} auto 20px;
 
       .ant-layout-content {
         background-color: ${({ isMainBg }) =>

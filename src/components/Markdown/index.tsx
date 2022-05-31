@@ -1,8 +1,5 @@
 import React from 'react'
 
-import { Anchor } from 'antd'
-
-import MarkNav from 'markdown-navbar'
 import 'markdown-navbar/dist/navbar.css'
 
 import ReactMarkdown from 'react-markdown'
@@ -43,15 +40,6 @@ const Detail: React.FC<MarkdownProps> = ({ textContent = '' }) => {
         >
           {textContent}
         </ReactMarkdown>
-      </div>
-      <div className="anchor">
-        <Anchor offsetTop={93}>
-          <MarkNav
-            source={textContent}
-            updateHashAuto={false}
-            headingTopOffset={15}
-          />
-        </Anchor>
       </div>
     </MarkdownStyle>
   )

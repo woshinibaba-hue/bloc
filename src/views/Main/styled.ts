@@ -9,6 +9,6 @@ export const MainStyle = styled.div`
 
   .sidebar {
     flex: 1;
-    margin-left: 15px;
+    margin-left: var(--main-margin);
   }
 `

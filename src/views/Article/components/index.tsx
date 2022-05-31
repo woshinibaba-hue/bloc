@@ -1,11 +1,10 @@
 import React, { memo, useState, useEffect } from 'react'
 
-import ZSkeleton from '@/components/Skeleton'
-import Markdown from '@/components/Markdown'
-
 import request from '@/server'
 
-import { ArticleContainer } from './types'
+import ZSkeleton from '@/components/Skeleton'
+import Sidebar from './Sidebar'
+import Main from './Main'
 
 export default memo(() => {
   const [textContent, setText] = useState<string>()
@@ -26,9 +25,12 @@ export default memo(() => {
   }, [])
 
   return (
-    <ArticleContainer>
+    <div>
       {textContent ? (
-        <Markdown textContent={textContent} />
+        <div style={{ display: 'flex' }}>
+          <Main textContent={textContent} />
+          <Sidebar textContent={textContent} />
+        </div>
       ) : (
         <ZSkeleton
           avatar
@@ -37,6 +39,6 @@ export default memo(() => {
           paragraphMarginBottom={[60, 30]}
         />
       )}
-    </ArticleContainer>
+    </div>
   )
 })
