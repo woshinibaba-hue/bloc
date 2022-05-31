@@ -1,10 +1,7 @@
-import React from 'react'
+import { CommentItemType } from '../Item/types'
 
-export interface CommentItem {
-  author: string
-  avatar: string
-  content: React.ReactNode
-  datetime: string
+export type CommentListProps = {
+  comments: CommentItemType[]
+  titleText?: string
+  pageSize?: number
 }
-
-export type CommentListProps = { comments: CommentItem[] }

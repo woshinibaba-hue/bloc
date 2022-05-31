@@ -1,3 +1,8 @@
 import { EditorProps } from './Editor/types'
 
-export interface CommentProps extends EditorProps {}
+import { CommentItemType } from './Item/types'
+
+export interface CommentProps extends EditorProps {
+  list: CommentItemType[]
+  pageSize?: number
+}

@@ -12,11 +12,13 @@ const Comments: React.FC<CommentProps> = ({
   onChange,
   onSubmit,
   submitting,
-  mainText
+  mainText,
+  list,
+  pageSize = 5
 }) => {
   return (
     <CommentStyled>
-      {/* 评论框 */}
+      {/* 评论/留言 框 */}
       <Editor
         onChange={onChange}
         value={value}
@@ -24,8 +26,9 @@ const Comments: React.FC<CommentProps> = ({
         mainText={mainText}
         submitting={submitting}
       />
-      {/* 评论列表 */}
-      <List />
+
+      {/* 评论/留言 列表 */}
+      <List comments={list} titleText={mainText} pageSize={pageSize} />
     </CommentStyled>
   )
 }

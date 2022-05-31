@@ -23,6 +23,14 @@ function Main({ textContent }: MarkdownProps) {
     console.log('发布评论', comment)
   }
 
+  const data = Array.from({ length: 23 }).map((_, i) => ({
+    username: '前端吴彦祖',
+    avatar:
+      'https://p3-passport.byteacctimg.com/img/user-avatar/f0b821163b109a64e2b8a5189d27de67~300x300.image',
+    content: '你是真的要我狗命，看完后我觉得自己啥都不是？？？？',
+    createtime: new Date()
+  }))
+
   return (
     <div>
       <MainStyle>
@@ -73,6 +81,7 @@ function Main({ textContent }: MarkdownProps) {
           value={comment}
           mainText="评论"
           onSubmit={onSumit}
+          list={data}
         />
       </CommentStyle>
     </div>
