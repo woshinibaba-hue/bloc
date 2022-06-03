@@ -1,24 +1,32 @@
 import React, { memo, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
+import { useDispatch, useSelector, shallowEqual } from 'react-redux'
+
+import { setActiveTag } from '@/layout/store/actioncreatore'
+import { RootStore } from '@/store/types'
+
 import classNames from 'classnames'
 
 import { MenuStyle } from './styled'
 
 import { IProps } from './type'
 
-function Menu({
-  items,
-  isShowBorder,
-  onClick,
-  setActiveTag,
-  activeTag = 1
-}: IProps) {
+function Menu({ items, isShowBorder, onClick }: IProps) {
   const location = useLocation()
+
+  const { activeTag } = useSelector(
+    (state: RootStore) => ({
+      activeTag: state.layoutStore.activeTag
+    }),
+    shallowEqual
+  )
+
+  const dispatch = useDispatch()
 
   const toggle = (key: number | string) => {
     if (typeof key === 'number') {
-      setActiveTag && setActiveTag(key)
+      dispatch(setActiveTag(key))
     }
     onClick(key)
   }

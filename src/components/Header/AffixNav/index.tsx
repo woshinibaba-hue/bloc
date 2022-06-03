@@ -6,18 +6,16 @@ import Tags from '../../Tags'
 
 import { NavStyle } from './style'
 
-import { IProps } from './types'
-
 const { Search } = Input
 
-const Nav: React.FC<IProps> = ({ activeTag }) => {
+const Nav: React.FC = () => {
   return (
     <NavStyle>
       <div className="left">
         <div className="logo">
           <h2>logo</h2>
         </div>
-        <Tags activeTag={activeTag} />
+        <Tags />
       </div>
       <div className="right">
         <Search placeholder="请输入搜索内容" bordered={false} />

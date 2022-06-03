@@ -21,9 +21,6 @@ function LayOut() {
     setAffxe(affixed ?? false)
   }
 
-  // 激活的标签页
-  const [activeTag, setActiveTag] = useState(1)
-
   // 是否展示固定标签页
   const IsShowAffix = () => {
     if (location.pathname === '/') {
@@ -31,13 +28,7 @@ function LayOut() {
         <Affix offsetTop={0} onChange={onChange}>
           <Header className="header_tags">
             <div className="tags">
-              <div className="navs">
-                {isAffxe ? (
-                  <AffixNav activeTag={activeTag} setActiveTag={setActiveTag} />
-                ) : (
-                  <Tags activeTag={activeTag} setActiveTag={setActiveTag} />
-                )}
-              </div>
+              <div className="navs">{isAffxe ? <AffixNav /> : <Tags />}</div>
             </div>
           </Header>
         </Affix>

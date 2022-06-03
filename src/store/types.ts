@@ -1,11 +1,13 @@
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 import { CountState } from '@/views/Main/store/types'
+import { LayoutStore } from '@/layout/store/types'
 
 import { AppDispatch } from './index'
 
 export type RootStore = {
   countStore: CountState
+  layoutStore: LayoutStore
 }
 
 // 第一个类型参数：thunk action 返回值类型

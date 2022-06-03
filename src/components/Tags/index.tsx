@@ -37,19 +37,13 @@ const items = [
   }
 ]
 
-const Tags: React.FC<TagType> = ({ activeTag, setActiveTag }) => {
+const Tags: React.FC<TagType> = () => {
   const handlerClick = (key: number | string) => {
     console.log(key)
   }
   return (
     <TagsStyle>
-      <Menu
-        items={items}
-        isShowBorder={false}
-        onClick={handlerClick}
-        activeTag={activeTag}
-        setActiveTag={setActiveTag}
-      />
+      <Menu items={items} isShowBorder={false} onClick={handlerClick} />
     </TagsStyle>
   )
 }

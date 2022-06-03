@@ -2,9 +2,11 @@
 import { combineReducers } from 'redux'
 
 import CountReducer from '@/views/Main/store'
+import LayoutReducer from '@/layout/store'
 
 const reducer = combineReducers({
-  countStore: CountReducer
+  countStore: CountReducer,
+  layoutStore: LayoutReducer
 })
 
 export default reducer
