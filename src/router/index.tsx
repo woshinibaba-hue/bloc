@@ -52,7 +52,7 @@ const syncRouter = (routes: IRoute[]): RouteObject[] => {
     mRoutes.push({
       path: route.path,
       element: (
-        <Suspense fallback={<div>Loding...</div>}>
+        <Suspense fallback={<div className="bg">页面正在努力加载中...</div>}>
           <route.component />
         </Suspense>
       ),

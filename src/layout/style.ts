@@ -3,6 +3,7 @@ import styled from 'styled-components'
 type IProps = {
   isAffixNav?: boolean
   isMainBg?: boolean
+  isAffixTags?: boolean
 }
 
 export const LayOutStyle = styled.div<IProps>`
@@ -19,15 +20,9 @@ export const LayOutStyle = styled.div<IProps>`
     }
 
     .nav-header {
-      position: ${({ isAffixNav }) => (isAffixNav ? 'fixed' : '')};
+      position: ${({ isAffixNav }) => (isAffixNav ? '' : 'fixed')};
       z-index: 1;
       width: 100%;
-    }
-
-    .navs {
-      width: 100%;
-      max-width: 1156px;
-      margin: 0 auto;
     }
 
     .header_tags {
@@ -36,6 +31,8 @@ export const LayOutStyle = styled.div<IProps>`
       box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 5%);
 
       .tags {
+        ${({ isAffixTags }) =>
+          isAffixTags ? 'max-width: 1154px;' : 'max-width: 960px;'}
         margin: 0 auto;
       }
     }
@@ -43,7 +40,7 @@ export const LayOutStyle = styled.div<IProps>`
     > .main {
       max-width: 960px;
       width: 100%;
-      margin: ${({ isAffixNav }) => (isAffixNav ? '74px' : '10px')} auto 20px;
+      margin: ${({ isAffixNav }) => (!isAffixNav ? '79px' : '10px')} auto 15px;
 
       .ant-layout-content {
         background-color: ${({ isMainBg }) =>

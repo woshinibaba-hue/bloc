@@ -2,18 +2,22 @@ import React, { memo } from 'react'
 
 import { Input, Button } from 'antd'
 
+import Tags from '../../Tags'
+
 import { NavStyle } from './style'
+
+import { IProps } from './types'
 
 const { Search } = Input
 
-function Nav() {
+const Nav: React.FC<IProps> = ({ activeTag }) => {
   return (
     <NavStyle>
       <div className="left">
         <div className="logo">
           <h2>logo</h2>
         </div>
-        <div className="tags">标签页</div>
+        <Tags activeTag={activeTag} />
       </div>
       <div className="right">
         <Search placeholder="请输入搜索内容" bordered={false} />

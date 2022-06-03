@@ -4,8 +4,8 @@ import { ProposType } from './types'
 
 export const ItemStyle = styled.div<ProposType>`
   cursor: pointer;
-  margin-bottom: 10px;
   font-size: 13px;
+  margin-bottom: var(--main-margin);
   border-bottom: 1px solid #f0f1f5;
 
   .info {

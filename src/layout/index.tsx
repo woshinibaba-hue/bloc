@@ -4,8 +4,8 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { Layout, Divider, Affix } from 'antd'
 
 import AffixNav from '@/components/Header/AffixNav'
+import Tags from '@/components/Tags'
 import Nav from '../components/Header/Nav'
-import Tags from './components/Tags'
 
 import { LayOutStyle } from './style'
 
@@ -21,20 +21,29 @@ function LayOut() {
     setAffxe(affixed ?? false)
   }
 
+  // 激活的标签页
+  const [activeTag, setActiveTag] = useState(1)
+
   // 是否展示固定标签页
-  const isShowAffix = () => {
+  const IsShowAffix = () => {
     if (location.pathname === '/') {
       return (
         <Affix offsetTop={0} onChange={onChange}>
           <Header className="header_tags">
             <div className="tags">
-              <div className="navs">{isAffxe ? <AffixNav /> : <Tags />}</div>
+              <div className="navs">
+                {isAffxe ? (
+                  <AffixNav activeTag={activeTag} setActiveTag={setActiveTag} />
+                ) : (
+                  <Tags activeTag={activeTag} setActiveTag={setActiveTag} />
+                )}
+              </div>
             </div>
           </Header>
         </Affix>
       )
     }
-    return ''
+    return <div style={{ display: 'none' }}>111</div>
   }
 
   useEffect(() => {
@@ -43,7 +52,8 @@ function LayOut() {
 
   return (
     <LayOutStyle
-      isAffixNav={location.pathname !== '/'}
+      isAffixTags={isAffxe}
+      isAffixNav={location.pathname === '/'}
       isMainBg={
         location.pathname !== '/' && !location.pathname.includes('/article')
       }
@@ -55,8 +65,8 @@ function LayOut() {
           </div>
         </Header>
         <Divider />
-        {isShowAffix()}
-        <Layout className="main shadow">
+        <IsShowAffix />
+        <Layout className="main">
           <Content>
             <Outlet />
           </Content>

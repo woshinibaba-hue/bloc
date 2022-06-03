@@ -5,6 +5,9 @@ export const MainStyle = styled.div`
 
   .list {
     width: var(--content-width);
+
+    border-radius: var(--radius);
+    overflow: hidden;
   }
 
   .sidebar {

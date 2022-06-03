@@ -3,7 +3,9 @@ import styled from 'styled-components'
 export const NavStyle = styled.div`
   display: flex;
   align-items: center;
+  max-width: 1156px;
   height: 64px;
+  margin: 0 auto;
 
   .logo {
     margin-right: 55px;

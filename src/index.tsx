@@ -1,12 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
+import { Provider } from 'react-redux'
+
 import zhCN from 'antd/lib/locale/zh_CN'
 import { ConfigProvider } from 'antd'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 
 import reportWebVitals from './reportWebVitals'
+
+import store from './store'
 
 // css样式重置
 import 'normalize.css'
@@ -20,7 +24,9 @@ root.render(
   // <React.StrictMode> // 是否开启严格模式
   <BrowserRouter>
     <ConfigProvider locale={zhCN}>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ConfigProvider>
   </BrowserRouter>
   // </React.StrictMode>

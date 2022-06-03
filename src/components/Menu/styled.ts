@@ -1,6 +1,11 @@
 import styled from 'styled-components'
 
-export const MenuStyle = styled.div`
+type IProps = {
+  isShowBorder?: boolean
+}
+
+export const MenuStyle = styled.div<IProps>`
+  max-width: 600px;
   flex: 1;
   display: flex;
 
@@ -18,5 +23,7 @@ export const MenuStyle = styled.div`
       color: var(--color-text);
       border-bottom-color: var(--color-text);
     }
+
+    border: ${({ isShowBorder = true }) => (isShowBorder ? '' : '0')};
   }
 `

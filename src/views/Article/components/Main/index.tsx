@@ -71,11 +71,13 @@ function Main({ textContent }: MarkdownProps) {
             <LikeFilled className="icon active" />
           </Badge>
           <Badge count={99} color="#c2c8d1" offset={[0, 5]}>
-            <MessageFilled className="icon" />
+            <a href="#comment">
+              <MessageFilled className="icon" />
+            </a>
           </Badge>
         </div>
       </MainStyle>
-      <CommentStyle>
+      <CommentStyle id="comment">
         <Comment
           onChange={onChange}
           value={comment}

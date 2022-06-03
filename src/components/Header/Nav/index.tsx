@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { Input, Button, Avatar, Menu, Dropdown } from 'antd'
 import { BellFilled, MessageFilled, UserOutlined } from '@ant-design/icons'
@@ -37,12 +37,17 @@ const items = [
 ]
 
 function Nav() {
+  const navigate = useNavigate()
+
+  const handlerClick = (key: string | number) => {
+    navigate(key as string)
+  }
   return (
     <NavStyle>
       <div className="logo">
         <h2>logo</h2>
       </div>
-      <ZMenu items={items} />
+      <ZMenu items={items} onClick={handlerClick} />
       <Search placeholder="请输入搜索内容" bordered={false} />
       <Button shape="round" type="primary">
         提问
