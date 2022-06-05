@@ -1,8 +1,10 @@
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { Input, Button, Avatar, Menu, Dropdown } from 'antd'
 import { BellFilled, MessageFilled, UserOutlined } from '@ant-design/icons'
+
+import WaitingModal from '../WaitingModal'
 
 import ZMenu from '../../Menu'
 
@@ -42,6 +44,9 @@ function Nav() {
   const handlerClick = (key: string | number) => {
     navigate(key as string)
   }
+
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <NavStyle>
       <div className="logo">
@@ -49,7 +54,7 @@ function Nav() {
       </div>
       <ZMenu items={items} onClick={handlerClick} />
       <Search placeholder="请输入搜索内容" bordered={false} />
-      <Button shape="round" type="primary">
+      <Button shape="round" type="primary" onClick={() => setIsOpen(!isOpen)}>
         提问
       </Button>
       <BellFilled />
@@ -57,6 +62,8 @@ function Nav() {
       <Dropdown overlay={menu} placement="bottomLeft">
         <Avatar size={40} icon={<UserOutlined />} />
       </Dropdown>
+
+      <WaitingModal isOpen={isOpen} close={setIsOpen} />
     </NavStyle>
   )
 }
