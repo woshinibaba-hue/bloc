@@ -15,20 +15,41 @@ function Main({ textContent }: MarkdownProps) {
   // 评论
   const [comment, setComment] = useState('')
 
-  const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setComment(e.target.value)
+  const onChange = (value: string) => {
+    setComment(value)
   }
 
   const onSumit = () => {
     console.log('发布评论', comment)
   }
 
+  const handlerReply = (id: number, content: string) => {
+    console.log('回复评论', id, content)
+  }
+
+  const handlerLike = (id: number) => {
+    console.log('点击了喜欢按钮', id)
+  }
+
+  const handlerMessage = (id: number) => {
+    console.log('点击了评论按钮', id)
+  }
+
   const data = Array.from({ length: 23 }).map((_, i) => ({
+    id: i,
     username: '前端吴彦祖',
     avatar:
       'https://p3-passport.byteacctimg.com/img/user-avatar/f0b821163b109a64e2b8a5189d27de67~300x300.image',
     content: '你是真的要我狗命，看完后我觉得自己啥都不是？？？？',
-    createtime: new Date()
+    createtime: new Date(),
+    children: Array.from({ length: 3 }).map((item, id) => ({
+      id: (id + 1) * 10,
+      username: `前端吴彦祖_${(id + 1) * 10}`,
+      avatar:
+        'https://p3-passport.byteacctimg.com/img/user-avatar/f0b821163b109a64e2b8a5189d27de67~300x300.image',
+      content: '你是真的要我狗命，看完后我觉得自己啥都不是？？？？',
+      createtime: new Date()
+    }))
   }))
 
   return (
@@ -84,6 +105,9 @@ function Main({ textContent }: MarkdownProps) {
           mainText="评论"
           onSubmit={onSumit}
           list={data}
+          handlerLike={handlerLike}
+          handlerMessage={handlerMessage}
+          reply={handlerReply}
         />
       </CommentStyle>
     </div>

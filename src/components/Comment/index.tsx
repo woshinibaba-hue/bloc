@@ -14,7 +14,10 @@ const Comments: React.FC<CommentProps> = ({
   submitting,
   mainText,
   list,
-  pageSize = 5
+  pageSize = 5,
+  handlerLike,
+  handlerMessage,
+  reply
 }) => {
   return (
     <CommentStyled>
@@ -28,7 +31,14 @@ const Comments: React.FC<CommentProps> = ({
       />
 
       {/* 评论/留言 列表 */}
-      <List comments={list} titleText={mainText} pageSize={pageSize} />
+      <List
+        reply={reply}
+        comments={list}
+        titleText={mainText}
+        pageSize={pageSize}
+        handlerLike={handlerLike}
+        handlerMessage={handlerMessage}
+      />
     </CommentStyled>
   )
 }

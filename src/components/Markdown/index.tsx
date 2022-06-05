@@ -19,8 +19,8 @@ const Detail: React.FC<MarkdownProps> = ({ textContent = '' }) => {
               return !inline && match ? (
                 <SyntaxHighlighter
                   style={materialDark}
-                  showLineNumbers
                   language={match[1]}
+                  showLineNumbers
                   PreTag="div"
                 >
                   {String(children).replace(/\n$/, '')}

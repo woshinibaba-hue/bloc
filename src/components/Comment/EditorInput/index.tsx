@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
 
 import { Input, Comment, Avatar, Form, Button } from 'antd'
 
@@ -11,16 +11,34 @@ const EditorInput: React.FC<EditorProps> = ({
   value,
   submitting,
   onSubmit,
-  mainText
+  mainText,
+  isAvatar = true,
+  isFocus = false
 }) => {
   const onKeyUp = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.ctrlKey && e.key === 'Enter' && value?.trim()) {
-      onSubmit!()
+      onSubmit()
     }
   }
+
+  const onChangeText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    onChange(e.target.value)
+  }
+
+  useEffect(() => {
+    return () => {
+      // 当组件被销毁的时候，清空输入框的内容
+      onChange('')
+    }
+  }, [])
+
   return (
     <Comment
-      avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="头像" />}
+      avatar={
+        isAvatar && (
+          <Avatar src="https://joeschmoe.io/api/v1/random" alt="头像" />
+        )
+      }
       content={
         <>
           <Form.Item>
@@ -28,10 +46,13 @@ const EditorInput: React.FC<EditorProps> = ({
               allowClear
               showCount
               autoSize={{ minRows: 3 }}
-              onChange={onChange}
+              onChange={onChangeText}
               value={value}
-              placeholder={`输入${mainText}（Enter换行，Ctrl + Enter发送）`}
+              placeholder={`输入${mainText}内容（Enter换行，Ctrl + Enter发送）`}
               onKeyUp={onKeyUp}
+              ref={(input) => {
+                isFocus && input && input.focus()
+              }}
             />
           </Form.Item>
           <Form.Item>
@@ -44,6 +65,9 @@ const EditorInput: React.FC<EditorProps> = ({
             >
               {mainText}
             </Button>
+            <span style={{ marginLeft: '10px', color: '#86909c' }}>
+              Ctrl + Enter
+            </span>
           </Form.Item>
         </>
       }
