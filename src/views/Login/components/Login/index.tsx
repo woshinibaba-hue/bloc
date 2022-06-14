@@ -1,40 +1,93 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect, useState, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { Form, Input, Button, Checkbox } from 'antd'
+import { useDispatch } from 'react-redux'
+
+import { Form, Input, Button, Checkbox, message } from 'antd'
 
 import { UserOutlined, LockOutlined, KeyOutlined } from '@ant-design/icons'
+
+import { loginAction } from '@/views/Login/store/actionCreatore'
+
+import storage from '@/utils/storage'
+
+import { debounce } from '@/utils/debounce'
+
+import * as loginReq from '@/api/login'
+import * as Logintype from '@/api/login/types'
 
 import { LoginStyle } from './style'
 import { ILoginData } from '../../types'
 
-function Code() {
-  return <div>验证码占位符</div>
-}
-
 function Login() {
-  const onFinish = (values: ILoginData) => {
-    console.log(values)
+  const navigator = useNavigate()
+  const [code, setCode] = useState<string>('')
+
+  const dispatch = useDispatch()
+
+  // 获取验证码
+  async function getCode() {
+    const res = await loginReq.getLoginCode()
+    setCode(res as any)
   }
+
+  useEffect(() => {
+    getCode()
+  }, [])
+
+  const codeRef = useRef(null)
+
+  // 登录
+  const onFinish = async (values: ILoginData) => {
+    if (values.remember) {
+      // 存储用户名和密码
+      storage.set('login_info', {
+        email: values.email,
+        password: values.password
+      })
+    } else {
+      storage.remove('login_info')
+    }
+
+    const user = await loginReq.login(values)
+    dispatch(loginAction(user.data))
+    storage.set('user', user.data)
+    storage.set('user_token', user.data.token)
+    message.success(user.message)
+    navigator('/')
+  }
+
+  // 验证验证码
+  const checkCode = debounce(async (_: any, value: string) => {
+    if (!value?.trim()) return Promise.reject(new Error('验证码不能为空！'))
+
+    try {
+      const res = await loginReq.checkLoginCode(value)
+      return Promise.resolve(res)
+    } catch (e: any) {
+      return Promise.reject(e.response.data)
+    }
+  })
+
   return (
     <LoginStyle>
       <Form
+        ref={codeRef}
         name="normal_login"
         className="login-form"
-        initialValues={{ remember: true }}
+        initialValues={{
+          remember: true,
+          email: storage.get<Logintype.UserLogin>('login_info')?.email,
+          password: storage.get<Logintype.UserLogin>('login_info')?.password
+        }}
         onFinish={onFinish}
       >
         <Form.Item
           name="email"
           hasFeedback
           rules={[
-            {
-              required: true,
-              message: '邮箱不能为空'
-            },
-            {
-              type: 'email',
-              message: '邮箱格式不正确'
-            }
+            { required: true, message: '邮箱不能为空' },
+            { type: 'email', message: '邮箱格式不正确' }
           ]}
         >
           <Input
@@ -57,8 +110,19 @@ function Login() {
           className="captcha"
           hasFeedback
           name="captcha"
-          extra={<Code />}
-          rules={[{ required: true, message: '验证码不能为空' }]}
+          extra={
+            <div
+              onClick={getCode}
+              style={{ cursor: 'pointer', userSelect: 'none' }}
+            >
+              <img
+                src={`data:image/svg+xml;utf8,${encodeURIComponent(code)}`}
+                alt=""
+              />
+              <span>点击刷新验证码</span>
+            </div>
+          }
+          rules={[{ validator: checkCode }]}
         >
           <Input prefix={<KeyOutlined />} placeholder="验证码" key={1} />
         </Form.Item>

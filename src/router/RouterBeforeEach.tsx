@@ -5,6 +5,8 @@ import { ExclamationCircleOutlined } from '@ant-design/icons'
 
 import { useRoutes, useLocation, useNavigate } from 'react-router-dom'
 
+import storage from '@/utils/storage'
+
 import routers from './index'
 
 // react 18 chilren 需要单独给类型
@@ -12,7 +14,7 @@ interface IProps {
   // children: React.ReactNode
 }
 
-const token = '1111'
+const token = storage.get('user_token')
 
 // 需要登录才可访问的路由
 const whiteList = ['/write']

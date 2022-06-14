@@ -9,5 +9,16 @@ module.exports = {
       '@assets': pathResolve('src/assets'),
       '@components': pathResolve('src/components')
     }
+  },
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8888/api',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
   }
 }

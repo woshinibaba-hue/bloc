@@ -1,5 +1,4 @@
 // reducer 纯函数
-
 import { CountState, ActionType } from './types'
 
 // 定义初始化数据
@@ -7,7 +6,7 @@ const initialState: CountState = {
   count: 0
 }
 
-// 定义reducer(纯函数)
+// 定义 reducer(纯函数)
 export default function reducer(
   state: CountState,
   action: ActionType<{ count: number }>

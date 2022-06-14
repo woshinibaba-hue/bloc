@@ -1,5 +1,9 @@
 import axios, { AxiosError, AxiosInstance } from 'axios'
 
+import storage from '@/utils/storage'
+
+import { message } from 'antd'
+
 import { IRequestConfig, IDataResult } from './type'
 
 class Request {
@@ -33,7 +37,22 @@ class Request {
       (response) => {
         return response.data
       },
-      (err: AxiosError) => {
+      (err: AxiosError<IDataResult>) => {
+        if (err.response?.data.message) {
+          message.config({
+            duration: 2,
+            maxCount: 1
+          })
+          message.error(err.response.data.message)
+        }
+
+        // token 过期，删除当前用户信息
+        if (err.response?.data.code === -1) {
+          storage.remove('login_info')
+          storage.remove('user_token')
+          message.error('token已失效，请重新登录')
+        }
+
         return Promise.reject(err)
       }
     )

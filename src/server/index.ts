@@ -7,20 +7,21 @@ const request = new Request({
   timeout: 5000,
   interceptors: {
     requestInstance: (config) => {
-      console.log('每个请求单独的请求拦截器')
+      // console.log('每个请求单独的请求拦截器')
       return config
     },
     requestInstanceCatch: (error) => {
       return Promise.reject(error)
     },
     responseInstance: (config) => {
-      console.log('每个请求单独的响应拦截器')
+      // console.log('每个请求单独的响应拦截器')
       return config
     },
     responseInstanceCatch: (error) => {
       return Promise.reject(error)
     }
-  }
+  },
+  withCredentials: true
 })
 
 export default request

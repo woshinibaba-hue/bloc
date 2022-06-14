@@ -2,12 +2,14 @@ import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 import { CountState } from '@/views/Main/store/types'
 import { LayoutStore } from '@/layout/store/types'
+import { LoginState } from '@/views/Login/store/types'
 
 import { AppDispatch } from './index'
 
 export type RootStore = {
   countStore: CountState
   layoutStore: LayoutStore
+  LoginStore: LoginState
 }
 
 // 第一个类型参数：thunk action 返回值类型
@@ -20,5 +22,9 @@ export type RootThunkAction<T extends Action> = ThunkAction<
   unknown,
   T
 >
+
+export interface ZAction<A = any, P = any> extends Action<A> {
+  payload?: P
+}
 
 export type { AppDispatch }

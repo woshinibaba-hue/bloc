@@ -28,7 +28,7 @@ export const LoginContainer = styled.div`
 
     .main {
       width: 400px;
-      height: 480px;
+      height: 490px;
       background-color: #fff;
       padding: 10px 30px 20px;
       box-shadow: 0 1px 3px rgba(18, 18, 18, 10%);

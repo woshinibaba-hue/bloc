@@ -11,6 +11,10 @@ import {
   PlusOutlined
 } from '@ant-design/icons'
 
+import { register } from '@/api/login'
+
+import type { IDataResult } from '@/server/request/type'
+import type { ImageType } from '@/api/login/types'
 import type { UploadChangeParam } from 'antd/es/upload'
 import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface'
 
@@ -41,18 +45,24 @@ const beforeUpload = (file: RcFile) => {
 function Register() {
   const [loading, setLoading] = useState(false)
   const [imageUrl, setImageUrl] = useState<string>()
+  const [form] = Form.useForm()
 
   // 上传图片
   const handleChange: UploadProps['onChange'] = (
-    info: UploadChangeParam<UploadFile>
+    info: UploadChangeParam<UploadFile<IDataResult<ImageType>>>
   ) => {
+    // 上传中
     if (info.file.status === 'uploading') {
-      setLoading(true)
-      return
+      // 开启loading
+      return setLoading(true)
     }
+    // 上传成功
     if (info.file.status === 'done') {
+      // 关闭loading
       setLoading(false)
-      // setImageUrl(url)
+      // 获取图片url
+      const url = info.file.response?.data.filesPath[0].url
+      setImageUrl(url)
     }
   }
 
@@ -63,13 +73,17 @@ function Register() {
     </div>
   )
 
-  const onFinish = (values: IRegisterData) => {
-    console.log(values, imageUrl)
+  const onFinish = async (values: IRegisterData) => {
+    await register({ ...values, avatar: imageUrl })
+    setImageUrl('')
+    form.resetFields()
+    message.success('注册成功!')
   }
 
   return (
     <RegisterContainer>
       <Form
+        form={form}
         name="normal_login"
         className="login-form"
         initialValues={{ remember: true }}
@@ -140,16 +154,25 @@ function Register() {
           </div>
           <div className="avatar">
             <Upload
-              name="avatar"
+              name="image"
               listType="picture-card"
               className="avatar-uploader"
               showUploadList={false}
-              action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+              action="http://localhost:8888/api/upload/img"
               beforeUpload={beforeUpload}
               onChange={handleChange}
             >
               {imageUrl ? (
-                <img src={imageUrl} alt="avatar" style={{ width: '100%' }} />
+                <img
+                  src={imageUrl}
+                  alt="avatar"
+                  style={{
+                    width: '100%',
+                    objectFit: 'cover',
+                    height: '100%',
+                    borderRadius: 'unset'
+                  }}
+                />
               ) : (
                 uploadButton
               )}

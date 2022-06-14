@@ -13,5 +13,5 @@ export interface ILoginData extends IUserBase {
 export interface IRegisterData extends IUserBase {
   username: string
   mobile: string
-  image: string
+  avatar: string
 }
