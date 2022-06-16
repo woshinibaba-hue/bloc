@@ -9,7 +9,7 @@ import { AppDispatch } from './index'
 export type RootStore = {
   countStore: CountState
   layoutStore: LayoutStore
-  LoginStore: LoginState
+  loginStore: LoginState
 }
 
 // 第一个类型参数：thunk action 返回值类型

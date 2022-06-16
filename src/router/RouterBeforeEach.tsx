@@ -14,8 +14,6 @@ interface IProps {
   // children: React.ReactNode
 }
 
-const token = storage.get('user_token')
-
 // 需要登录才可访问的路由
 const whiteList = ['/write']
 
@@ -29,6 +27,8 @@ const RouterBeforeEach: React.FC<IProps> = () => {
   const element = useRoutes(routers)
 
   useEffect(() => {
+    const token = storage.get('user_token')
+
     // 如果当前用户访问登录页，并且当前用户已经登录成功，则跳转至首页
     if (location.pathname === '/login' && token) {
       navigate('/')
@@ -57,7 +57,7 @@ const RouterBeforeEach: React.FC<IProps> = () => {
       lastPathname = location.pathname
       setAuto(true)
     }
-  }, [location.pathname, token])
+  }, [location.pathname])
 
   return auto ? element : null
 }

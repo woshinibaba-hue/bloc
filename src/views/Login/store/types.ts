@@ -2,11 +2,17 @@ import { ILoginRes } from '@/api/login/types'
 
 export type LoginState = {
   user: ILoginRes
+  prevUrl: string
 }
 
-export type Action = 'Login'
+export type Action = 'Login' | 'PrevUrl' | 'Logout'
 
-export type LoginAction<T = any> = {
+export type PayloadType = {
+  user?: ILoginRes
+  prevUrl?: string
+}
+
+export type LoginAction = {
   type: Action
-  payload: T
+  payload: PayloadType
 }

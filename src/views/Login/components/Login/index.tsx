@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 
 import { Form, Input, Button, Checkbox, message } from 'antd'
 
@@ -13,6 +13,7 @@ import storage from '@/utils/storage'
 
 import { debounce } from '@/utils/debounce'
 
+import { RootStore } from '@/store/types'
 import * as loginReq from '@/api/login'
 import * as Logintype from '@/api/login/types'
 
@@ -24,6 +25,13 @@ function Login() {
   const [code, setCode] = useState<string>('')
 
   const dispatch = useDispatch()
+
+  const { url } = useSelector(
+    (state: RootStore) => ({
+      url: state.loginStore.prevUrl ?? '/'
+    }),
+    shallowEqual
+  )
 
   // 获取验证码
   async function getCode() {
@@ -54,7 +62,7 @@ function Login() {
     storage.set('user', user.data)
     storage.set('user_token', user.data.token)
     message.success(user.message)
-    navigator('/')
+    navigator(url)
   }
 
   // 验证验证码

@@ -33,4 +33,13 @@ export const NavStyle = styled.div`
     font-size: 18px;
     margin: 0 50px 0 30px;
   }
+
+  .user {
+    margin-left: 15px;
+
+    .login {
+      cursor: pointer;
+      color: #1890ff;
+    }
+  }
 `
